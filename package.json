@@ -1,0 +1,15 @@
+{
+  "name": "digital-biology-lab-static",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static rebuild workflow for the archived Digital Biology Lab website.",
+  "type": "module",
+  "scripts": {
+    "extract:pages": "node scripts/extract-pages.mjs",
+    "build": "node scripts/build.mjs",
+    "check:parity": "node scripts/check-parity.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

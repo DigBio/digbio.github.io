@@ -1,0 +1,74 @@
+[
+  {
+    "id": "home",
+    "title": "Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 11,
+    "source": "index.html",
+    "output": "index.html",
+    "primaryNav": true
+  },
+  {
+    "id": "news",
+    "title": "News | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 180,
+    "source": "digital-bio-news/index.html",
+    "output": "digital-bio-news/index.html",
+    "primaryNav": true
+  },
+  {
+    "id": "team",
+    "title": "Team | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 1514,
+    "source": "our-team/index.html",
+    "output": "our-team/index.html",
+    "primaryNav": true
+  },
+  {
+    "id": "publications",
+    "title": "Publications | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 923,
+    "source": "publications/index.html",
+    "output": "publications/index.html",
+    "primaryNav": true
+  },
+  {
+    "id": "software",
+    "title": "Software | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 15,
+    "source": "software/index.html",
+    "output": "software/index.html",
+    "primaryNav": true
+  },
+  {
+    "id": "contact",
+    "title": "Contact | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 156,
+    "source": "contact/index.html",
+    "output": "contact/index.html",
+    "primaryNav": true
+  },
+  {
+    "id": "assets",
+    "title": "Assets | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 801,
+    "source": "assets/index.html",
+    "output": "assets/index.html",
+    "primaryNav": false
+  },
+  {
+    "id": "thank-for-your-message",
+    "title": "Thank for your message! | Digital Biology Lab",
+    "wordpressType": "pages",
+    "wordpressId": 3478,
+    "source": "thank-for-your-message/index.html",
+    "output": "thank-for-your-message/index.html",
+    "primaryNav": false
+  }
+]
