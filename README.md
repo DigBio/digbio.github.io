@@ -1,49 +1,34 @@
-# Digital Biology Lab - Archived Website
+# Digital Biology Lab Website
 
-This repository started as a static snapshot of the former Digital Biology Lab
-website, previously hosted at `digbio.missouri.edu`. The original WordPress site
-is no longer maintained.
+This is the rebuilt static website for the Digital Biology Lab. It is a simple
+8-page static site that can be edited directly as HTML and deployed with GitHub
+Pages.
 
-Snapshot taken: 2026-07-30.
+The previous WordPress snapshot was backed up in Git commit `eb6c68b` before the
+cleanup.
 
-## Static rebuild workflow
+## Project Structure
 
-The original snapshot files are kept in `archive/snapshot-2026-07-30/` as the
-reference copy. The 8 WordPress page-type pages have also been extracted into
-editable source files:
+- `index.html` is the Home page.
+- `digital-bio-news/index.html` is the News page.
+- `our-team/index.html` is the Team page.
+- `publications/index.html` is the Publications page.
+- `software/index.html` is the Software page.
+- `contact/index.html` is the Contact page.
+- `assets/index.html` is the Assets page.
+- `thank-for-your-message/index.html` is the thank-you page.
+- `assets/uploads/` contains images and PDFs used by the pages.
+- `assets/legacy/` contains old theme and plugin CSS/JS needed to preserve the
+  original appearance.
 
-- `src/pages/*.html` contains the editable `<main id="content">...</main>` block
-  for each page.
-- `src/shells/*.before.html` and `src/shells/*.after.html` preserve the original
-  WordPress-generated wrapper around each page.
-- `src/pages.json` maps each editable page to its original snapshot path and its
-  generated output path.
+## Editing
 
-Build the deployable static site with:
+Edit the HTML files directly. Most content changes should happen in one of the
+8 `index.html` files listed above. The files under `assets/legacy/` are
+preserved style and script dependencies from the old site and should usually be
+left alone.
 
-```bash
-npm run build
-```
+## Deploy
 
-The rebuilt website is written to `dist/`. This directory is the deployable
-static product: it contains only the 8 rebuilt page-type HTML pages plus the
-static WordPress assets needed for those pages to display correctly. The build
-copies `wp-content/` and `wp-includes/` from the archived snapshot, then
-regenerates the 8 editable pages from `src/`.
-
-To confirm that the first extracted version still matches the archived snapshot:
-
-```bash
-npm run build
-npm run check:parity
-```
-
-Only run the extractor again when you intentionally want to reset the editable
-page sources from the current snapshot:
-
-```bash
-npm run extract:pages -- --force
-```
-
-GitHub Pages deployment is configured in `.github/workflows/pages.yml`. In the
-GitHub repository settings, set Pages to deploy from GitHub Actions.
+GitHub Pages deployment is configured in `.github/workflows/pages.yml`. The
+workflow uploads the static files directly; there is no build step.
