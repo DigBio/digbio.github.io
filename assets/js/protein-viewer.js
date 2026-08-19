@@ -4,51 +4,76 @@
   }
 
   var PROTEINS = [
-    { id: "1CRN", name: "Crambin" },
-    { id: "1UBQ", name: "Ubiquitin" },
-    { id: "2LYZ", name: "Lysozyme" },
-    { id: "1MBN", name: "Myoglobin" },
-    { id: "4HHB", name: "Hemoglobin" },
-    { id: "1GFL", name: "Green Fluorescent Protein" },
-    { id: "1TIM", name: "Triose Phosphate Isomerase" },
-    { id: "1IGT", name: "Immunoglobulin G (Antibody)" },
-    { id: "2PTC", name: "Trypsin–Inhibitor Complex" },
-    { id: "1AKE", name: "Adenylate Kinase" },
-    { id: "6VXX", name: "SARS-CoV-2 Spike Glycoprotein" },
-    { id: "3LZM", name: "T4 Lysozyme" },
-    { id: "1ATP", name: "Protein Kinase A" },
-    { id: "6LU7", name: "SARS-CoV-2 Main Protease" },
-    { id: "1RNH", name: "Ribonuclease H" },
-    { id: "3CHY", name: "CheY" },
-    { id: "1HRC", name: "Cytochrome C" },
-    { id: "2TRX", name: "Thioredoxin" },
-    { id: "1FKB", name: "FKBP12" },
-    { id: "1STN", name: "Staphylococcal Nuclease" },
-    { id: "1CHO", name: "Chymotrypsin" },
-    { id: "1SBT", name: "Subtilisin" },
-    { id: "3DFR", name: "Dihydrofolate Reductase" },
-    { id: "2GBP", name: "Glucose/Galactose Binding Protein" },
-    { id: "1ANF", name: "Maltose Binding Protein" },
-    { id: "4FXN", name: "Flavodoxin" },
-    { id: "6LDH", name: "Lactate Dehydrogenase" },
-    { id: "1ALC", name: "Alpha-Lactalbumin" },
-    { id: "2PAB", name: "Transthyretin" },
-    { id: "1CA2", name: "Carbonic Anhydrase II" },
-    { id: "1RBP", name: "Retinol Binding Protein" },
-    { id: "1PYP", name: "Inorganic Pyrophosphatase" },
-    { id: "6ADH", name: "Alcohol Dehydrogenase" },
-    { id: "1HGU", name: "Human Growth Hormone" },
-    { id: "5P21", name: "Ras p21 Protein" },
-    { id: "5CHA", name: "Chymotrypsinogen A" },
-    { id: "1LZ1", name: "Human Lysozyme" },
-    { id: "2SGA", name: "Streptomyces Griseus Protease A" },
-    { id: "1RHD", name: "Rhodanese" },
-    { id: "1GCR", name: "Gamma-Crystallin" },
-    { id: "1PAZ", name: "Pseudoazurin" },
-    { id: "1OVA", name: "Ovalbumin" },
-    { id: "7API", name: "Alpha-1-Antitrypsin" },
-    { id: "1REI", name: "Immunoglobulin Light Chain" },
-    { id: "1WSY", name: "Tryptophan Synthase" }
+    { id: "1CRN", name: "Crambin", fn: "Antifungal plant seed protein" },
+    { id: "1UBQ", name: "Ubiquitin", fn: "Tags proteins for degradation" },
+    { id: "2LYZ", name: "Lysozyme", fn: "Breaks down bacterial cell walls" },
+    { id: "1MBN", name: "Myoglobin", fn: "Stores oxygen in muscle tissue" },
+    { id: "4HHB", name: "Hemoglobin", fn: "Carries oxygen in red blood cells" },
+    { id: "1GFL", name: "Green Fluorescent Protein", fn: "Glows green — used to label cells" },
+    { id: "1TIM", name: "Triose Phosphate Isomerase", fn: "Catalyzes a key step in glycolysis" },
+    { id: "1IGT", name: "Immunoglobulin G (Antibody)", fn: "Neutralizes pathogens for the immune system" },
+    { id: "2PTC", name: "Trypsin–Inhibitor Complex", fn: "Digestive enzyme bound to its inhibitor" },
+    { id: "1AKE", name: "Adenylate Kinase", fn: "Balances cellular energy (ATP/AMP)" },
+    { id: "6VXX", name: "SARS-CoV-2 Spike Glycoprotein", fn: "Lets the virus enter host cells" },
+    { id: "3LZM", name: "T4 Lysozyme", fn: "Viral enzyme that lyses bacteria" },
+    { id: "1ATP", name: "Protein Kinase A", fn: "Adds phosphates to regulate signaling" },
+    { id: "6LU7", name: "SARS-CoV-2 Main Protease", fn: "Cleaves viral proteins for replication" },
+    { id: "1RNH", name: "Ribonuclease H", fn: "Degrades RNA in RNA–DNA hybrids" },
+    { id: "3CHY", name: "CheY", fn: "Relays signals in bacterial movement" },
+    { id: "1HRC", name: "Cytochrome C", fn: "Shuttles electrons in respiration" },
+    { id: "2TRX", name: "Thioredoxin", fn: "Regulates cellular redox balance" },
+    { id: "1FKB", name: "FKBP12", fn: "Binds immunosuppressant drugs" },
+    { id: "1STN", name: "Staphylococcal Nuclease", fn: "Degrades DNA and RNA" },
+    { id: "1CHO", name: "Chymotrypsin", fn: "Digestive enzyme that cleaves proteins" },
+    { id: "1SBT", name: "Subtilisin", fn: "Bacterial protein-degrading enzyme" },
+    { id: "3DFR", name: "Dihydrofolate Reductase", fn: "Key enzyme in DNA synthesis" },
+    { id: "2GBP", name: "Glucose/Galactose Binding Protein", fn: "Senses sugars for bacterial transport" },
+    { id: "1ANF", name: "Maltose Binding Protein", fn: "Transports sugar across membranes" },
+    { id: "4FXN", name: "Flavodoxin", fn: "Shuttles electrons via a flavin cofactor" },
+    { id: "6LDH", name: "Lactate Dehydrogenase", fn: "Converts lactate to pyruvate" },
+    { id: "1ALC", name: "Alpha-Lactalbumin", fn: "Helps synthesize lactose in milk" },
+    { id: "2PAB", name: "Transthyretin", fn: "Transports thyroid hormone in blood" },
+    { id: "1CA2", name: "Carbonic Anhydrase II", fn: "Interconverts CO2 and bicarbonate" },
+    { id: "1RBP", name: "Retinol Binding Protein", fn: "Transports vitamin A in blood" },
+    { id: "1PYP", name: "Inorganic Pyrophosphatase", fn: "Powers biosynthesis reactions" },
+    { id: "6ADH", name: "Alcohol Dehydrogenase", fn: "Breaks down alcohol in metabolism" },
+    { id: "1HGU", name: "Human Growth Hormone", fn: "Stimulates growth and cell reproduction" },
+    { id: "5P21", name: "Ras p21 Protein", fn: "Molecular switch in cell-growth signaling" },
+    { id: "5CHA", name: "Chymotrypsinogen A", fn: "Inactive precursor of chymotrypsin" },
+    { id: "1LZ1", name: "Human Lysozyme", fn: "Antibacterial enzyme in tears and saliva" },
+    { id: "2SGA", name: "Streptomyces Griseus Protease A", fn: "Bacterial digestive enzyme" },
+    { id: "1RHD", name: "Rhodanese", fn: "Detoxifies cyanide in cells" },
+    { id: "1GCR", name: "Gamma-Crystallin", fn: "Keeps the eye lens transparent" },
+    { id: "1PAZ", name: "Pseudoazurin", fn: "Transfers electrons via a copper center" },
+    { id: "1OVA", name: "Ovalbumin", fn: "Major storage protein in egg white" },
+    { id: "7API", name: "Alpha-1-Antitrypsin", fn: "Protects lung tissue from enzyme damage" },
+    { id: "1REI", name: "Immunoglobulin Light Chain", fn: "Antibody fragment that binds antigens" },
+    { id: "1WSY", name: "Tryptophan Synthase", fn: "Synthesizes the amino acid tryptophan" },
+    { id: "1CTS", name: "Citrate Synthase", fn: "First step of the citric acid cycle" },
+    { id: "3PGK", name: "Phosphoglycerate Kinase", fn: "Generates ATP during glycolysis" },
+    { id: "1GPB", name: "Glycogen Phosphorylase", fn: "Releases glucose from glycogen stores" },
+    { id: "7CAT", name: "Catalase", fn: "Breaks down toxic hydrogen peroxide" },
+    { id: "1DPI", name: "DNA Polymerase I (Klenow Fragment)", fn: "Copies and repairs DNA" },
+    { id: "1PKN", name: "Pyruvate Kinase", fn: "Final step of glycolysis, makes ATP" },
+    { id: "4ALD", name: "Fructose-Bisphosphate Aldolase", fn: "Splits sugar in half during glycolysis" },
+    { id: "1AO6", name: "Human Serum Albumin", fn: "Most abundant protein in blood plasma" },
+    { id: "2ACE", name: "Acetylcholinesterase", fn: "Terminates nerve signal transmission" },
+    { id: "2MYS", name: "Myosin", fn: "Molecular motor that powers muscle contraction" },
+    { id: "1J4N", name: "Aquaporin", fn: "Water channel across cell membranes" },
+    { id: "1QLN", name: "T7 RNA Polymerase", fn: "Transcribes DNA into RNA" },
+    { id: "1LCI", name: "Firefly Luciferase", fn: "Produces bioluminescent light" },
+    { id: "8ATC", name: "Aspartate Transcarbamoylase", fn: "Classic model of allosteric regulation" },
+    { id: "1EJ9", name: "Topoisomerase", fn: "Untangles DNA during replication" },
+    { id: "1EFT", name: "Elongation Factor Tu", fn: "Delivers amino acids during protein synthesis" },
+    { id: "3CNA", name: "Concanavalin A", fn: "Plant lectin that binds sugars" },
+    { id: "1AMA", name: "Aspartate Aminotransferase", fn: "Shuttles nitrogen between amino acids" },
+    { id: "1DNP", name: "Photolyase", fn: "Repairs UV damage in DNA" },
+    { id: "1PPB", name: "Thrombin", fn: "Triggers blood clot formation" },
+    { id: "1JNF", name: "Serotransferrin", fn: "Transports iron through the bloodstream" },
+    { id: "2CPP", name: "Cytochrome P450cam", fn: "Metabolizes drugs and other compounds" },
+    { id: "7ACN", name: "Aconitase", fn: "Citric acid cycle enzyme with an iron-sulfur core" },
+    { id: "1BTL", name: "Beta-Lactamase", fn: "Breaks down penicillin-type antibiotics" },
+    { id: "1HSA", name: "MHC Class I", fn: "Displays cell contents to the immune system" }
   ];
 
   var BUBBLE_COUNT = 1;
@@ -67,10 +92,20 @@
 
     var label = document.createElement("a");
     label.className = "protein-label";
-    label.textContent = protein.name;
     label.href = "https://www.rcsb.org/structure/" + protein.id;
     label.target = "_blank";
     label.rel = "noopener noreferrer";
+
+    var nameEl = document.createElement("span");
+    nameEl.className = "protein-label-name";
+    nameEl.textContent = protein.name;
+    label.appendChild(nameEl);
+
+    var fnEl = document.createElement("span");
+    fnEl.className = "protein-label-fn";
+    fnEl.textContent = protein.fn;
+    label.appendChild(fnEl);
+
     bubble.appendChild(label);
 
     container.appendChild(bubble);

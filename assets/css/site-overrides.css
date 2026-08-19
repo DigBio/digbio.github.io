@@ -95,22 +95,40 @@ body.home #navigation.affix::after {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 12px 26px;
+    max-width: 380px;
+    padding: 16px 32px;
     background: #f3e2d8;
-    border-radius: 999px;
-    font-size: 1.5rem;
-    letter-spacing: 0.02em;
-    color: #4a4a4a;
-    white-space: nowrap;
+    border-radius: 18px;
+    text-align: center;
     text-decoration: none;
     cursor: pointer;
     z-index: 1;
     pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-label-name {
+    font-size: 1.9rem;
+    letter-spacing: 0.02em;
+    color: #4a4a4a;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-label-fn {
+    font-size: 1.4rem;
+    color: #7a716b;
   }
 
   body.home .pagebreak.pagebreak_right .protein-label:hover,
-  body.home .pagebreak.pagebreak_right .protein-label:focus {
+  body.home .pagebreak.pagebreak_right .protein-label:focus-visible {
     background: #ccecf8;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-label:hover .protein-label-name,
+  body.home .pagebreak.pagebreak_right .protein-label:hover .protein-label-fn,
+  body.home .pagebreak.pagebreak_right .protein-label:focus-visible .protein-label-name,
+  body.home .pagebreak.pagebreak_right .protein-label:focus-visible .protein-label-fn {
     color: #000000;
   }
 }
