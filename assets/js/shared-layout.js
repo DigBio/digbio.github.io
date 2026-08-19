@@ -53,6 +53,7 @@
     rewriteSitePaths();
     markActiveNavigation();
     applyHomeContainers();
+    updateCurrentYear();
     syncNavigationAffixState();
     watchNavigationClass();
     refreshNavigationSpacing();
@@ -99,6 +100,14 @@
 
     document.querySelectorAll("[data-home-container]").forEach(function (container) {
       container.classList.add("container-home");
+    });
+  }
+
+  function updateCurrentYear() {
+    var year = new Date().getFullYear().toString();
+
+    document.querySelectorAll("[data-current-year]").forEach(function (target) {
+      target.textContent = year;
     });
   }
 
@@ -242,8 +251,10 @@ footer.site-footer .site-footer-item{flex:0 1 auto}
 footer.site-footer .site-footer-logo{text-align:center}
 footer.site-footer #branding-container-footer{text-align:center;max-width:260px;margin:0 auto}
 footer.site-footer #branding-container-footer img{display:block;max-width:260px;margin:0 auto}
-footer.site-footer .footer-address{margin:0}
-footer.site-footer .footer-address p{margin:0;max-width:none;text-align:center;font-size:1.5rem;line-height:1.4}
+footer.site-footer .footer-affiliation{margin:0}
+footer.site-footer .footer-affiliation p{margin:0;max-width:520px;text-align:center;font-size:1.5rem;line-height:1.45}
+footer.site-footer .footer-affiliation a:link,footer.site-footer .footer-affiliation a:visited{color:#fff;background:transparent;text-decoration:none}
+footer.site-footer .footer-affiliation a:hover,footer.site-footer .footer-affiliation a:focus{color:#ccecf8;background:transparent;text-decoration:none}
 footer.site-footer .site-footer-links{text-align:center}
 footer.site-footer .footer-social{margin:0;text-align:center}
 footer.site-footer .footer-social li{display:inline-block}
@@ -265,26 +276,23 @@ footer.site-footer .creditbox p{max-width:none;margin:0;font-size:1.4rem;line-he
         </div>
       </div>
 
-      <div class="site-footer-item site-footer-address">
-        <div class="footer-address">
-          <!-- MU Universitysig Horiz Rgb Rev hidden.
-          <p><a title="Visit Missouri University" href="https://missouri.edu/" rel="noopener" target="_blank"><img loading="lazy" decoding="async" data-site-src="assets/uploads/2024/11/MU_UniversitySig_horiz_RGB_REV.png" alt="Mu Universitysig Horiz Rgb Rev" width="234" height="47" class="aligncenter size-full wp-image-3920" /></a></p>
-          -->
-          <p><strong>Bond Life Science Center</strong><br />
-          Lab 110<br />
-          1201 Rollins St.<br />
-          Columbia, MO 65211</p>
+      <div class="site-footer-item site-footer-affiliation">
+        <div class="footer-affiliation">
+          <p><strong><a data-site-href="index.html">Digital Biology Lab</a></strong><br />
+          <a href="https://www.hii.usf.edu/" target="_blank" rel="noopener">Health Informatics Institute</a><br />
+          <a href="https://www.usf.edu/" target="_blank" rel="noopener">University of South Florida</a><br />
+          Tampa, Florida, USA</p>
         </div>
       </div>
 
       <div class="site-footer-item site-footer-links">
         <ul class="social footer-social">
-          <li><a target="_blank" href="https://www.linkedin.com/groups/4998136/" title="Social Media Link for LinkedIn"><i class="fa-brands fab fa-linkedin" title="Social Media Icon for LinkedIn"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/groups/4998136/" title="Social Media Link for LinkedIn"><i class="fa-brands fab fa-linkedin" title="LinkedIn"></i></a></li>
         </ul>
       </div>
     </div>
     <div class="creditbox">
-      <p class="center">&copy; 2026 &mdash; The Curators of the <a href="https://www.umsystem.edu/">University of Missouri</a>. All rights reserved. <a href="https://missouri.edu/copyright/">DMCA and other copyright information</a>.</p>
+      <p class="center">&copy; <span data-current-year>2026</span> Digital Biology Lab. All rights reserved.</p>
     </div>
   </div>
 </footer><!-- #colophon -->
