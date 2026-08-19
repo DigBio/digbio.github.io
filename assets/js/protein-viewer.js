@@ -62,6 +62,8 @@
   pickRandom(PROTEINS, BUBBLE_COUNT).forEach(function (protein) {
     var bubble = document.createElement("div");
     bubble.className = "protein-bubble";
+    bubble.style.opacity = "0";
+    bubble.style.transition = "opacity 0.8s ease";
 
     var label = document.createElement("a");
     label.className = "protein-label";
@@ -91,6 +93,20 @@
   var GRADIENT_END = hexToRgb("#CDEDF9");
 
   function renderProtein(bubble, protein) {
+    var modelReady = false;
+    var introBgRevealed = false;
+
+    document.addEventListener("intro:bg-revealed", function () {
+      introBgRevealed = true;
+      revealIfReady();
+    });
+
+    function revealIfReady() {
+      if (modelReady && introBgRevealed) {
+        bubble.style.opacity = "1";
+      }
+    }
+
     var viewer = $3Dmol.createViewer(bubble, { backgroundColor: "white", backgroundAlpha: 0 });
     viewer.setBackgroundColor(0x000000, 0);
 
@@ -116,6 +132,8 @@
       });
       viewer.zoomTo();
       viewer.render();
+      modelReady = true;
+      revealIfReady();
     });
   }
 

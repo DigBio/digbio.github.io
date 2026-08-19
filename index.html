@@ -577,7 +577,36 @@ Digital Biology Laboratory (DBL) is a research and education powerhouse in bioin
 color: #ffffff;
 }
 </style>
-    
+<style>
+@media (min-width: 1200px) {
+  html.js body.home .pagebreak_container_inner > h1,
+  html.js body.home .pagebreak_container_inner > p,
+  html.js body.home .pagebreak_container_inner > a.btn-mayecreate {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  html.js body.home .pagebreak_container_inner > h1.intro-revealed,
+  html.js body.home .pagebreak_container_inner > p.intro-revealed,
+  html.js body.home .pagebreak_container_inner > a.btn-mayecreate.intro-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  html.js body.home .pagebreak.pagebreak_right::before {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  html.js body.home .pagebreak.pagebreak_right.intro-bg-revealed::before {
+    transform: translateX(0);
+    opacity: 0.95;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
+  }
+}
+</style>
+
 <!-- Google tag (gtag.js) -->
 
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TW4QFW4C"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); </script>
@@ -852,8 +881,9 @@ color: #ffffff;
 </main>
 <div data-include="site-footer"></div>
 <script src="assets/js/shared-layout.js" data-site-root="."></script>
-<script src="https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js"></script>
-<script src="assets/js/protein-viewer.js"></script>
+<script src="assets/js/intro-animation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js" defer></script>
+<script src="assets/js/protein-viewer.js" defer></script>
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/assets/uploads/*","/assets/legacy/wp-content/*","/assets/legacy/wp-content/plugins/*","/assets/legacy/wp-content/themes/mayecreate-child-theme/*","/assets/legacy/wp-content/themes/mayecreate-theme-22/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
