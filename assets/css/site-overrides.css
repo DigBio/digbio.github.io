@@ -38,6 +38,89 @@ body.home #navigation.affix::after {
   pointer-events: none;
 }
 
+@media (min-width: 1200px) {
+  body.home .pagebreak.pagebreak_right {
+    background-image: none !important;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body.home .pagebreak.pagebreak_right::before {
+    background-image: url("../legacy/wp-content/themes/mayecreate-child-theme/img/pagebreak-right.png");
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    content: "";
+    inset: 0;
+    opacity: 0.95;
+    pointer-events: none;
+    position: absolute;
+    z-index: 0;
+  }
+
+  body.home .pagebreak.pagebreak_right > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  body.home .pagebreak.pagebreak_right .pagebreak_right_img {
+    background-image: none !important;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-widgets {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-bubble {
+    position: absolute;
+    top: 42%;
+    left: 72%;
+    width: 1120px;
+    height: 1120px;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    pointer-events: none;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-bubble canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-label {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 26px;
+    background: #f3e2d8;
+    border-radius: 999px;
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+    color: #4a4a4a;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 1;
+    pointer-events: auto;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-label:hover,
+  body.home .pagebreak.pagebreak_right .protein-label:focus {
+    background: #ccecf8;
+    color: #000000;
+  }
+}
+
+@media (max-width: 1199px) {
+  body.home .protein-widgets {
+    display: none;
+  }
+}
+
 body.page-id-15 .kt-accordion-id15_07a97e-48 > .kt-accordion-inner-wrap > .wp-block-kadence-pane {
   margin-bottom: 0 !important;
 }
