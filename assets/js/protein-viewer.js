@@ -53,7 +53,6 @@
     { id: "3PGK", name: "Phosphoglycerate Kinase", fn: "Generates ATP during glycolysis" },
     { id: "1GPB", name: "Glycogen Phosphorylase", fn: "Releases glucose from glycogen stores" },
     { id: "7CAT", name: "Catalase", fn: "Breaks down toxic hydrogen peroxide" },
-    { id: "1DPI", name: "DNA Polymerase I (Klenow Fragment)", fn: "Copies and repairs DNA" },
     { id: "1PKN", name: "Pyruvate Kinase", fn: "Final step of glycolysis, makes ATP" },
     { id: "4ALD", name: "Fructose-Bisphosphate Aldolase", fn: "Splits sugar in half during glycolysis" },
     { id: "1AO6", name: "Human Serum Albumin", fn: "Most abundant protein in blood plasma" },
