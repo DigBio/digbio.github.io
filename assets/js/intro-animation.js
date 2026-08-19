@@ -3,11 +3,10 @@
     return;
   }
 
-  var contentEl = document.querySelector(".pagebreak_right_content");
   var contentInner = document.querySelector(".pagebreak_container_inner");
   var heroBox = document.querySelector(".pagebreak.pagebreak_right");
 
-  if (!contentEl || !contentInner || !heroBox) {
+  if (!contentInner || !heroBox) {
     dispatchBgRevealed();
     return;
   }
@@ -21,17 +20,10 @@
     return;
   }
 
-  var target = measureTargetCircle();
-
-  if (!target) {
-    revealTextInstantly();
-    revealBackground();
-    return;
-  }
-
   runIntro();
 
   function runIntro() {
+    var target = computeTarget();
     var overlay = createOverlay(target);
     document.body.appendChild(overlay);
 
@@ -79,34 +71,25 @@
     document.dispatchEvent(new CustomEvent("intro:bg-revealed"));
   }
 
-  function measureTargetCircle() {
-    var rect = contentEl.getBoundingClientRect();
-    var after = getComputedStyle(contentEl, "::after");
-    var afterWidth = parseFloat(after.width);
-    var afterHeight = parseFloat(after.height);
-    var afterLeftOffset = parseFloat(after.left) || 0;
-    var afterTopOffset = parseFloat(after.top) || 0;
-
-    if (!afterWidth || !afterHeight) {
-      return null;
-    }
+  function computeTarget() {
+    var diameter = 140;
 
     return {
-      top: rect.top + afterTopOffset,
-      left: rect.left + afterLeftOffset,
-      width: afterWidth,
-      height: afterHeight
+      diameter: diameter,
+      viewportCenterX: 100,
+      viewportCenterY: window.innerHeight - 100
     };
   }
 
-  function createOverlay(box) {
+  function createOverlay(target) {
     var viewportWidth = window.innerWidth;
     var viewportHeight = window.innerHeight;
-    var centerX = box.left + box.width / 2;
-    var centerY = box.top + box.height / 2;
+    var diameter = target.diameter;
+    var boxTop = target.viewportCenterY - diameter / 2;
+    var boxLeft = target.viewportCenterX - diameter / 2;
 
-    var scaleX = Math.max((2 * centerX) / box.width, (2 * (viewportWidth - centerX)) / box.width);
-    var scaleY = Math.max((2 * centerY) / box.height, (2 * (viewportHeight - centerY)) / box.height);
+    var scaleX = Math.max((2 * target.viewportCenterX) / diameter, (2 * (viewportWidth - target.viewportCenterX)) / diameter);
+    var scaleY = Math.max((2 * target.viewportCenterY) / diameter, (2 * (viewportHeight - target.viewportCenterY)) / diameter);
     var scale = Math.max(scaleX, scaleY) * 1.15;
 
     var el = document.createElement("div");
@@ -114,12 +97,12 @@
     el.dataset.startScale = String(scale);
     el.style.cssText = [
       "position:fixed",
-      "top:" + box.top + "px",
-      "left:" + box.left + "px",
-      "width:" + box.width + "px",
-      "height:" + box.height + "px",
+      "top:" + boxTop + "px",
+      "left:" + boxLeft + "px",
+      "width:" + diameter + "px",
+      "height:" + diameter + "px",
       "border-radius:50%",
-      "background:#f3e2d8",
+      "background:#F1E6DE",
       "z-index:9999",
       "pointer-events:none",
       "transform-origin:50% 50%",

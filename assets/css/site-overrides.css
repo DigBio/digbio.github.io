@@ -77,9 +77,9 @@ body.home #navigation.affix::after {
   body.home .pagebreak.pagebreak_right .protein-bubble {
     position: absolute;
     top: 38%;
-    left: 72%;
-    width: 1120px;
-    height: 1020px;
+    left: 76%;
+    width: 1400px;
+    height: 1200px;
     transform: translate(-50%, -50%);
     background: transparent;
     pointer-events: none;
