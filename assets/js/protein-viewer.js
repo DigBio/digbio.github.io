@@ -127,7 +127,31 @@
   var GRADIENT_START = hexToRgb("#F5D8C1");
   var GRADIENT_END = hexToRgb("#CDEDF9");
 
+  function restrictToRotateOnly(bubble) {
+    ["wheel", "contextmenu"].forEach(function (eventName) {
+      bubble.addEventListener(eventName, function (event) {
+        event.stopPropagation();
+      }, { capture: true, passive: false });
+    });
+
+    bubble.addEventListener("mousedown", function (event) {
+      if (event.button !== 0 || event.ctrlKey || event.shiftKey || event.metaKey) {
+        event.stopPropagation();
+      }
+    }, { capture: true });
+
+    ["touchstart", "touchmove"].forEach(function (eventName) {
+      bubble.addEventListener(eventName, function (event) {
+        if (event.touches.length > 1) {
+          event.stopPropagation();
+        }
+      }, { capture: true, passive: false });
+    });
+  }
+
   function renderProtein(bubble, protein) {
+    restrictToRotateOnly(bubble);
+
     var modelReady = false;
     var introBgRevealed = false;
 

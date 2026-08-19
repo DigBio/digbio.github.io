@@ -82,7 +82,12 @@ body.home #navigation.affix::after {
     height: 1120px;
     transform: translate(-50%, -50%);
     background: transparent;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: grab;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-bubble:active {
+    cursor: grabbing;
   }
 
   body.home .pagebreak.pagebreak_right .protein-bubble canvas {
