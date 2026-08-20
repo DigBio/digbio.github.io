@@ -199,6 +199,18 @@
     var viewer = $3Dmol.createViewer(bubble, { backgroundColor: "white", backgroundAlpha: 0 });
     viewer.setBackgroundColor(0x000000, 0);
 
+    var userInteracted = false;
+
+    function stopAutoSpin() {
+      if (!userInteracted) {
+        userInteracted = true;
+        viewer.spin(false);
+      }
+    }
+
+    bubble.addEventListener("mousedown", stopAutoSpin, { passive: true });
+    bubble.addEventListener("touchstart", stopAutoSpin, { passive: true });
+
     $3Dmol.download("pdb:" + protein.id, viewer, {}, function () {
       var atoms = viewer.getModel().selectedAtoms({ hetflag: false });
       var minResi = Infinity;
@@ -221,6 +233,11 @@
       });
       viewer.zoomTo();
       viewer.render();
+
+      if (!userInteracted) {
+        viewer.spin([0.4, 1, 0.2], 0.04, true);
+      }
+
       modelReady = true;
       revealIfReady();
     });

@@ -78,8 +78,8 @@ body.home #navigation.affix::after {
     position: absolute;
     top: 38%;
     left: 76%;
-    width: 1400px;
-    height: 1120px;
+    width: clamp(900px, 68%, 1400px);
+    aspect-ratio: 5 / 4;
     transform: translate(-50%, -50%);
     background: transparent;
     pointer-events: auto;
