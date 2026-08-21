@@ -95,11 +95,15 @@ body.home #navigation.affix::after {
     height: 100% !important;
   }
 
-  body.home .pagebreak.pagebreak_right .protein-label {
+  body.home .pagebreak.pagebreak_right .protein-caption {
     position: absolute;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-label {
     max-width: 380px;
     padding: 16px 32px;
     background: #f3e2d8;
@@ -107,7 +111,6 @@ body.home #navigation.affix::after {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    z-index: 1;
     pointer-events: auto;
     display: flex;
     flex-direction: column;
@@ -115,14 +118,35 @@ body.home #navigation.affix::after {
   }
 
   body.home .pagebreak.pagebreak_right .protein-label-name {
-    font-size: 1.9rem;
+    font-size: 2.1rem;
     letter-spacing: 0.02em;
     color: #4a4a4a;
   }
 
   body.home .pagebreak.pagebreak_right .protein-label-fn {
-    font-size: 1.4rem;
+    font-size: 1.55rem;
     color: #7a716b;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-hover-hint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    padding: 8px 18px;
+    background: #f3e2d8;
+    border-radius: 12px;
+    font-size: 1.35rem;
+    color: #4a4a4a;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  body.home .pagebreak.pagebreak_right .protein-hover-hint.is-visible {
+    opacity: 1;
   }
 
   body.home .pagebreak.pagebreak_right .protein-label:hover,

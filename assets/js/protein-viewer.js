@@ -114,7 +114,22 @@
     return;
   }
 
-  pickRandom(PROTEINS, BUBBLE_COUNT).forEach(function (protein) {
+  var introBgRevealed = false;
+  var pendingReveals = [];
+
+  document.addEventListener("intro:bg-revealed", function () {
+    introBgRevealed = true;
+    pendingReveals.forEach(function (reveal) {
+      reveal();
+    });
+    pendingReveals = [];
+  });
+
+  for (var i = 0; i < BUBBLE_COUNT; i++) {
+    createProteinWidget(pickRandom(PROTEINS, 1)[0]);
+  }
+
+  function createProteinWidget(protein) {
     var bubble = document.createElement("div");
     bubble.className = "protein-bubble";
     bubble.style.opacity = "0";
@@ -136,11 +151,52 @@
     fnEl.textContent = protein.fn;
     label.appendChild(fnEl);
 
-    bubble.appendChild(label);
+    var hoverHint = document.createElement("div");
+    hoverHint.className = "protein-hover-hint";
+    hoverHint.textContent = "Double-click the model for another protein";
 
+    var caption = document.createElement("div");
+    caption.className = "protein-caption";
+    caption.appendChild(label);
+
+    bubble.appendChild(caption);
+    bubble.appendChild(hoverHint);
     container.appendChild(bubble);
-    renderProtein(bubble, protein);
-  });
+
+    bubble.addEventListener("mousemove", function (event) {
+      var rect = bubble.getBoundingClientRect();
+      var x = event.clientX - rect.left + 18;
+      var y = event.clientY - rect.top + 22;
+      var maxX = rect.width - hoverHint.offsetWidth - 4;
+      var maxY = rect.height - hoverHint.offsetHeight - 4;
+
+      x = Math.max(4, Math.min(x, maxX));
+      y = Math.max(4, Math.min(y, maxY));
+
+      hoverHint.style.transform = "translate(" + x + "px, " + y + "px)";
+    });
+
+    var viewer = renderProtein(bubble, protein, hoverHint);
+    var switching = false;
+
+    bubble.addEventListener("dblclick", function (event) {
+      if (switching || caption.contains(event.target)) {
+        return;
+      }
+      switching = true;
+
+      viewer.spin(false);
+      bubble.style.opacity = "0";
+
+      window.setTimeout(function () {
+        bubble.remove();
+        var remaining = PROTEINS.filter(function (p) {
+          return p.id !== protein.id;
+        });
+        createProteinWidget(pickRandom(remaining, 1)[0]);
+      }, 400);
+    });
+  }
 
   function pickRandom(list, count) {
     var pool = list.slice();
@@ -179,20 +235,19 @@
     });
   }
 
-  function renderProtein(bubble, protein) {
+  function renderProtein(bubble, protein, hoverHint) {
     restrictToRotateOnly(bubble);
 
     var modelReady = false;
-    var introBgRevealed = false;
-
-    document.addEventListener("intro:bg-revealed", function () {
-      introBgRevealed = true;
-      revealIfReady();
-    });
 
     function revealIfReady() {
-      if (modelReady && introBgRevealed) {
+      if (!modelReady) {
+        return;
+      }
+      if (introBgRevealed) {
         bubble.style.opacity = "1";
+      } else {
+        pendingReveals.push(revealIfReady);
       }
     }
 
@@ -231,6 +286,13 @@
           }
         }
       });
+      viewer.setHoverDuration(60);
+      viewer.getModel().setHoverable({}, true, function () {
+        hoverHint.classList.add("is-visible");
+      }, function () {
+        hoverHint.classList.remove("is-visible");
+      });
+
       viewer.zoomTo();
       viewer.render();
 
@@ -241,6 +303,8 @@
       modelReady = true;
       revealIfReady();
     });
+
+    return viewer;
   }
 
   function hexToRgb(hex) {
