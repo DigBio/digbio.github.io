@@ -383,3 +383,120 @@ body.page-id-923 .kb-show-more-buttons .kb-button::after {
 body.page-id-923 .kb-block-show-more-container.kb-smc-open > .kb-show-more-buttons .kb-button::after {
   content: "-";
 }
+
+body.page-id-180 .publication-list {
+  padding: 20px 0 40px;
+}
+
+body.page-id-180 .news-timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 28px;
+  list-style: none;
+}
+
+body.page-id-180 .news-timeline::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 13px;
+  width: 2px;
+  background: rgba(74, 74, 74, 0.2);
+}
+
+body.page-id-180 .news-timeline-item {
+  position: relative;
+  padding: 0 0 36px;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+body.page-id-180 .news-timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: -19px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4a4a4a;
+}
+
+body.page-id-180 .news-timeline-year {
+  position: relative;
+  margin: 0 !important;
+  padding: 22px 0 22px;
+  list-style: none !important;
+  font-family: 'Koulen', cursive;
+  font-size: 2.4rem;
+  letter-spacing: 0.02em;
+  color: #4a4a4a;
+}
+
+body.page-id-180 .news-timeline-year::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -21px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4a4a4a;
+}
+
+@media (min-width: 992px) {
+  body.page-id-180 .news-timeline-year {
+    padding: 20px 0 36px;
+  }
+
+  body.page-id-180 .news-timeline-year::before {
+    top: 14px;
+  }
+
+  body.page-id-180 .news-timeline-year-label {
+    position: absolute;
+    top: 2px;
+    left: -114px;
+    width: 80px;
+    text-align: right;
+  }
+}
+
+body.page-id-180 .news-timeline-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 20px;
+  row-gap: 2px;
+  text-decoration: none;
+  padding: 4px 10px;
+  margin: -4px -10px;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+body.page-id-180 .news-timeline-link:hover,
+body.page-id-180 .news-timeline-link:focus-visible {
+  background: #f3e2d8;
+}
+
+body.page-id-180 .news-timeline-date {
+  flex: 0 0 auto;
+  min-width: 130px;
+  margin: 0 !important;
+  font-family: Conv_HELVETICANEUELTSTD-LT, sans-serif;
+  color: #7a716b;
+}
+
+body.page-id-180 .news-timeline-title {
+  flex: 1 1 320px;
+  margin: 0 !important;
+  line-height: 1.35 !important;
+}
+
+@media (max-width: 767px) {
+  body.page-id-180 .news-timeline-date {
+    min-width: 0;
+  }
+}
