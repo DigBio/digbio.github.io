@@ -130,22 +130,24 @@ body.home #navigation.affix::after {
 
   body.home .pagebreak.pagebreak_right .protein-hover-hint {
     position: absolute;
-    left: 0;
-    top: 0;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
     z-index: 2;
-    padding: 8px 18px;
-    background: #f3e2d8;
+    padding: 6px 16px;
+    background: #ccecf8;
     border-radius: 12px;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     color: #4a4a4a;
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.2s ease;
     pointer-events: none;
-    will-change: transform;
   }
 
-  body.home .pagebreak.pagebreak_right .protein-hover-hint.is-visible {
+  body.home .pagebreak.pagebreak_right .protein-caption:hover .protein-hover-hint,
+  body.home .pagebreak.pagebreak_right .protein-caption:focus-within .protein-hover-hint {
     opacity: 1;
   }
 

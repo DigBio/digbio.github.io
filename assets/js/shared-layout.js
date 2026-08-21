@@ -233,8 +233,8 @@
       <nav id="main_nav" class="menu-main-menu-container" aria-label="Main Navigation">
         <ul id="menu-main-menu" class="menu pull-right">
           <li id="menu-item-3002" data-nav-id="home" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-3002"><a data-site-href="index.html"><span>Home</span></a></li>
-          <li id="menu-item-3003" data-nav-id="news" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3003"><a data-site-href="digital-bio-news/index.html"><span>News</span></a></li>
           <li id="menu-item-3004" data-nav-id="team" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3004"><a data-site-href="our-team/index.html"><span>Team</span></a></li>
+          <li id="menu-item-3003" data-nav-id="news" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3003"><a data-site-href="digital-bio-news/index.html"><span>News</span></a></li>
           <li id="menu-item-3005" data-nav-id="publications" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3005"><a data-site-href="publications/index.html"><span>Publications</span></a></li>
           <li id="menu-item-3006" data-nav-id="software" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3006"><a data-site-href="software/index.html"><span>Software</span></a></li>
           <li id="menu-item-3007" data-nav-id="contact" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3007"><a data-site-href="contact/index.html"><span>Contact</span></a></li>
@@ -311,8 +311,8 @@ footer.site-footer .creditbox p{max-width:none;margin:0;font-size:1.4rem;line-he
 
   <ul id="menu-main-menu-1" class="menu">
     <li data-nav-id="home" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-3002"><a data-site-href="index.html"><span>Home</span></a></li>
-    <li data-nav-id="news" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3003"><a data-site-href="digital-bio-news/index.html"><span>News</span></a></li>
     <li data-nav-id="team" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3004"><a data-site-href="our-team/index.html"><span>Team</span></a></li>
+    <li data-nav-id="news" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3003"><a data-site-href="digital-bio-news/index.html"><span>News</span></a></li>
     <li data-nav-id="publications" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3005"><a data-site-href="publications/index.html"><span>Publications</span></a></li>
     <li data-nav-id="software" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3006"><a data-site-href="software/index.html"><span>Software</span></a></li>
     <li data-nav-id="contact" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3007"><a data-site-href="contact/index.html"><span>Contact</span></a></li>

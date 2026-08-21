@@ -135,11 +135,8 @@
     bubble.style.opacity = "0";
     bubble.style.transition = "opacity 0.8s ease";
 
-    var label = document.createElement("a");
+    var label = document.createElement("div");
     label.className = "protein-label";
-    label.href = "https://www.rcsb.org/structure/" + protein.id;
-    label.target = "_blank";
-    label.rel = "noopener noreferrer";
 
     var nameEl = document.createElement("span");
     nameEl.className = "protein-label-name";
@@ -153,35 +150,38 @@
 
     var hoverHint = document.createElement("div");
     hoverHint.className = "protein-hover-hint";
-    hoverHint.textContent = "Double-click the model for another protein";
+    hoverHint.textContent = "Click for another protein";
 
     var caption = document.createElement("div");
     caption.className = "protein-caption";
     caption.appendChild(label);
+    caption.appendChild(hoverHint);
 
     bubble.appendChild(caption);
-    bubble.appendChild(hoverHint);
     container.appendChild(bubble);
 
-    bubble.addEventListener("mousemove", function (event) {
-      var rect = bubble.getBoundingClientRect();
-      var x = event.clientX - rect.left + 18;
-      var y = event.clientY - rect.top + 22;
-      var maxX = rect.width - hoverHint.offsetWidth - 4;
-      var maxY = rect.height - hoverHint.offsetHeight - 4;
-
-      x = Math.max(4, Math.min(x, maxX));
-      y = Math.max(4, Math.min(y, maxY));
-
-      hoverHint.style.transform = "translate(" + x + "px, " + y + "px)";
-    });
-
-    var viewer = renderProtein(bubble, protein, hoverHint);
+    var viewer = renderProtein(bubble, protein);
     var switching = false;
+    var downPoint = null;
 
-    bubble.addEventListener("dblclick", function (event) {
-      if (switching || caption.contains(event.target)) {
+    function recordDown(event) {
+      var point = event.touches ? event.touches[0] : event;
+      downPoint = { x: point.clientX, y: point.clientY };
+    }
+
+    bubble.addEventListener("mousedown", recordDown, { passive: true });
+    bubble.addEventListener("touchstart", recordDown, { passive: true });
+
+    bubble.addEventListener("click", function (event) {
+      if (switching || !caption.contains(event.target)) {
         return;
+      }
+      if (downPoint) {
+        var dx = event.clientX - downPoint.x;
+        var dy = event.clientY - downPoint.y;
+        if (Math.sqrt(dx * dx + dy * dy) > 6) {
+          return;
+        }
       }
       switching = true;
 
@@ -235,7 +235,7 @@
     });
   }
 
-  function renderProtein(bubble, protein, hoverHint) {
+  function renderProtein(bubble, protein) {
     restrictToRotateOnly(bubble);
 
     var modelReady = false;
@@ -286,13 +286,6 @@
           }
         }
       });
-      viewer.setHoverDuration(60);
-      viewer.getModel().setHoverable({}, true, function () {
-        hoverHint.classList.add("is-visible");
-      }, function () {
-        hoverHint.classList.remove("is-visible");
-      });
-
       viewer.zoomTo();
       viewer.render();
 
