@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thank-for-your-message/
+
+Sitemap: https://digbio.github.io/sitemap.xml

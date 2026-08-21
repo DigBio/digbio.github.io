@@ -1,4 +1,9 @@
 (function () {
+  // GitHub Pages sends Cache-Control: max-age=600 on every file with no way to override it.
+  // Bump this whenever shared-layout.js, protein-viewer.js, intro-animation.js, or
+  // site-overrides.css change, AND update the matching ?v= on every <script src> for those
+  // three files across all HTML pages, so visitors get the update without a hard refresh.
+  var ASSET_VERSION = "20260821";
   var script = document.currentScript;
   var siteRoot = script && script.getAttribute("data-site-root") ? script.getAttribute("data-site-root") : ".";
   var pageId = document.body.classList.contains("home") ? "home" : document.body.classList.contains("single-post") ? "news" : getPageId(window.location.pathname);
@@ -22,7 +27,7 @@
       return;
     }
 
-    fetch(withBase(partialPath))
+    fetch(withBase(partialPath) + "?v=" + ASSET_VERSION)
       .then(function (response) {
         if (!response.ok) {
           throw new Error("Unable to load " + partialPath);
@@ -174,7 +179,7 @@
     var stylesheet = document.createElement("link");
     stylesheet.id = "site-overrides-css";
     stylesheet.rel = "stylesheet";
-    stylesheet.href = withBase("assets/css/site-overrides.css");
+    stylesheet.href = withBase("assets/css/site-overrides.css") + "?v=" + ASSET_VERSION;
     document.head.appendChild(stylesheet);
   }
 
