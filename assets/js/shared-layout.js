@@ -1,9 +1,10 @@
 (function () {
   // GitHub Pages sends Cache-Control: max-age=600 on every file with no way to override it.
-  // Bump this whenever shared-layout.js, protein-viewer.js, intro-animation.js, or
-  // site-overrides.css change, AND update the matching ?v= on every <script src> for those
-  // three files across all HTML pages, so visitors get the update without a hard refresh.
-  var ASSET_VERSION = "20260821";
+  // Bump this whenever shared-layout.js, protein-viewer.js, intro-animation.js,
+  // hero-decor.js, or site-overrides.css change, AND update the matching ?v= on
+  // every <script src> for those files across HTML pages, so visitors get the
+  // update without a hard refresh.
+  var ASSET_VERSION = "20260821aa";
   var script = document.currentScript;
   var siteRoot = script && script.getAttribute("data-site-root") ? script.getAttribute("data-site-root") : ".";
   var pageId = document.body.classList.contains("home") ? "home" : document.body.classList.contains("single-post") ? "news" : getPageId(window.location.pathname);

@@ -41,8 +41,16 @@ body.home #navigation.affix::after {
 @media (min-width: 1200px) {
   body.home .pagebreak.pagebreak_right {
     background-image: none !important;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  body.home footer.site-footer {
+    position: relative;
+    z-index: 2;
   }
 
   body.home .pagebreak.pagebreak_right::before {
@@ -61,6 +69,33 @@ body.home #navigation.affix::after {
   body.home .pagebreak.pagebreak_right > * {
     position: relative;
     z-index: 1;
+  }
+
+  body.home .pagebreak.pagebreak_right .pagebreak_right_content {
+    z-index: 3;
+  }
+
+  body.home .pagebreak.pagebreak_right .hero-decor {
+    filter: none;
+    left: 0;
+    max-width: none;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transform: translate3d(var(--hero-decor-x, 0px), var(--hero-decor-y, 0px), 0) translate(-50%, -50%) rotate(var(--hero-decor-rotation, 0deg)) scale(var(--hero-decor-scale, 1));
+    transform-origin: center center;
+    transition: opacity 1.4s ease, width 0.8s ease;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+    width: var(--hero-decor-size, 38%);
+    will-change: opacity, transform;
+    z-index: 1;
+  }
+
+  body.home .pagebreak.pagebreak_right .hero-decor.is-visible {
+    opacity: var(--hero-decor-opacity, 1);
   }
 
   body.home .pagebreak.pagebreak_right .pagebreak_right_img {
@@ -165,6 +200,7 @@ body.home #navigation.affix::after {
 }
 
 @media (max-width: 1199px) {
+  body.home .hero-decor,
   body.home .protein-widgets {
     display: none;
   }
