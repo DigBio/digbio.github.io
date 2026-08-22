@@ -17,11 +17,7 @@
 
   var desktopQuery = window.matchMedia("(min-width: 1200px)");
   var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var kindOrder = [
-    "protein", "neuralnetwork", "cell",
-    "neuralnetwork", "cell", "protein",
-    "cell", "protein", "neuralnetwork"
-  ];
+  var kindOrder = ["protein", "neuralnetwork", "cell"];
   var activeBodies = [];
   var animationFrame = null;
   var bounds = null;
@@ -36,15 +32,9 @@
   var started = false;
 
   var slots = [
-    { left: 45, top: 13, size: 30, rotation: -7, opacity: 1, layer: 1 },
-    { left: 70, top: 11, size: 31, rotation: 5, opacity: 1, layer: 2 },
-    { left: 95, top: 13.5, size: 30, rotation: -4, opacity: 1, layer: 1 },
-    { left: 45, top: 49, size: 31, rotation: 4, opacity: 1, layer: 2 },
-    { left: 70, top: 47.5, size: 30, rotation: -5, opacity: 1, layer: 1 },
-    { left: 95, top: 49.5, size: 31, rotation: 6, opacity: 1, layer: 2 },
-    { left: 45, top: 88, size: 30, rotation: -3, opacity: 1, layer: 1 },
-    { left: 70, top: 90, size: 31, rotation: 5, opacity: 1, layer: 2 },
-    { left: 95, top: 89, size: 30, rotation: -6, opacity: 1, layer: 1 }
+    { left: 62, top: 16, size: 36, rotation: -7, opacity: 1, layer: 1 },
+    { left: 88, top: 49, size: 37, rotation: 5, opacity: 1, layer: 2 },
+    { left: 64, top: 95, size: 36, rotation: -4, opacity: 1, layer: 1 }
   ];
 
   document.addEventListener("intro:bg-revealed", start, { once: true });
@@ -419,12 +409,12 @@
 
   function selectSceneDecors() {
     var pickedByKind = {
-      protein: pickRandom(groups.protein, 3),
-      neuralnetwork: pickRandom(groups.neuralnetwork, 3),
-      cell: pickRandom(groups.cell, 3)
+      protein: pickRandom(groups.protein, 1),
+      neuralnetwork: pickRandom(groups.neuralnetwork, 1),
+      cell: pickRandom(groups.cell, 1)
     };
 
-    return kindOrder.map(function (kind) {
+    return shuffleList(kindOrder).map(function (kind) {
       return pickedByKind[kind].shift();
     }).filter(Boolean);
   }
@@ -451,6 +441,20 @@
     }
 
     return picked;
+  }
+
+  function shuffleList(list) {
+    var shuffled = list.slice();
+
+    for (var i = shuffled.length - 1; i > 0; i--) {
+      var swapIndex = randomInt(0, i);
+      var value = shuffled[i];
+
+      shuffled[i] = shuffled[swapIndex];
+      shuffled[swapIndex] = value;
+    }
+
+    return shuffled;
   }
 
   function pctToX(value) {
