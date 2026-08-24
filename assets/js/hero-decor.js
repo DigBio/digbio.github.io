@@ -17,7 +17,6 @@
 
   var desktopQuery = window.matchMedia("(min-width: 1200px)");
   var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var kindOrder = ["protein", "neuralnetwork", "cell"];
   var activeBodies = [];
   var animationFrame = null;
   var bounds = null;
@@ -34,7 +33,7 @@
   var slots = [
     { left: 62, top: 16, size: 36, rotation: -7, opacity: 1, layer: 1 },
     { left: 88, top: 49, size: 37, rotation: 5, opacity: 1, layer: 2 },
-    { left: 64, top: 95, size: 36, rotation: -4, opacity: 1, layer: 1 }
+    { left: 64, top: 84, size: 36, rotation: -4, opacity: 1, layer: 1 }
   ];
 
   document.addEventListener("intro:bg-revealed", start, { once: true });
@@ -320,7 +319,8 @@
     var rect = hero.getBoundingClientRect();
     var footer = document.querySelector("footer.site-footer");
     var footerTop = footer ? footer.getBoundingClientRect().top - rect.top : rect.height;
-    var visualBottom = Math.max(rect.height * 1.02, footerTop);
+    var bottomLift = rect.height * 0.055;
+    var visualBottom = Math.max(rect.height * 0.96, footerTop - bottomLift);
 
     bounds = {
       bottom: visualBottom,
@@ -408,15 +408,13 @@
   }
 
   function selectSceneDecors() {
-    var pickedByKind = {
-      protein: pickRandom(groups.protein, 1),
-      neuralnetwork: pickRandom(groups.neuralnetwork, 1),
-      cell: pickRandom(groups.cell, 1)
-    };
+    var selected = [
+      pickRandom(groups.protein, 1)[0],
+      pickRandom(groups.neuralnetwork, 1)[0],
+      pickRandom(groups.cell, 1)[0]
+    ].filter(Boolean);
 
-    return shuffleList(kindOrder).map(function (kind) {
-      return pickedByKind[kind].shift();
-    }).filter(Boolean);
+    return shuffleList(selected);
   }
 
   function groupByKind(images) {

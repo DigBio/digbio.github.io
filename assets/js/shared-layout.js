@@ -4,7 +4,7 @@
   // hero-decor.js, or site-overrides.css change, AND update the matching ?v= on
   // every <script src> for those files across HTML pages, so visitors get the
   // update without a hard refresh.
-  var ASSET_VERSION = "20260822b";
+  var ASSET_VERSION = "20260823e";
   var script = document.currentScript;
   var siteRoot = script && script.getAttribute("data-site-root") ? script.getAttribute("data-site-root") : ".";
   var pageId = document.body.classList.contains("home") ? "home" : document.body.classList.contains("single-post") ? "news" : getPageId(window.location.pathname);
