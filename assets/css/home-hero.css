@@ -1,0 +1,72 @@
+/* Four decorative research objects; keep the original homepage layout intact. */
+.hero-parallax-scene { display: none; }
+
+@media (min-width: 1200px) {
+  body.home .pagebreak.pagebreak_right > .hero-parallax-scene {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: clip;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  body.home .pagebreak.pagebreak_right > .hero-parallax-scene.is-ready { opacity: 1; }
+
+  .hero-research-object {
+    position: absolute;
+    left: var(--object-x);
+    top: var(--object-y);
+    width: var(--object-size);
+    aspect-ratio: 1;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    perspective: 1200px;
+  }
+  .hero-research-object[data-kind="protein"] {
+    --object-x: 57%; --object-y: 68%; --object-size: 31%;
+    --float-delay: -2s;
+    z-index: 1;
+  }
+  .hero-research-object[data-kind="cell"] {
+    --object-x: 80%; --object-y: 48%; --object-size: 26%;
+    --float-delay: -7s;
+    z-index: 1;
+  }
+  .hero-research-object[data-kind="network"] {
+    --object-x: 59.5%; --object-y: 24%; --object-size: 32%;
+    --float-delay: -4s;
+    z-index: 0;
+  }
+  .hero-research-object[data-kind="leaf"] {
+    display: none;
+    --object-x: 80%; --object-y: 86%; --object-size: 25%;
+    --float-delay: -9s;
+    z-index: 1;
+  }
+  .hero-object-motion { position: absolute; inset: 0; will-change: transform; }
+  .hero-object-motion picture { display: block; width: 100%; height: 100%; }
+  .hero-object-motion img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+  .hero-parallax-scene.is-moving.is-in-view .hero-object-motion img {
+    animation: research-object-drift 14s ease-in-out var(--float-delay) infinite;
+  }
+  @keyframes research-object-drift {
+    0%, 100% { transform: translateY(4px) rotate(-1deg); }
+    50% { transform: translateY(-4px) rotate(1deg); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home .pagebreak.pagebreak_right > .hero-parallax-scene { transition: none; }
+  .hero-object-motion img { animation: none !important; }
+}
