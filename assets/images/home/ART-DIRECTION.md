@@ -9,8 +9,10 @@ Muted blue `#6BA6BE` and warm ivory `#F1E6DE`, with the same satin matte porcela
 ## Final assets
 
 - `assets/images/home/protein.webp`
+- `assets/images/home/protein-coherent.webp` (single continuous-chain alternate)
 - `assets/images/home/cell.webp`
 - `assets/images/home/network.webp`
+- `assets/images/home/network-straight.webp` (straight-line alternate; currently used on the homepage)
 - `assets/images/home/leaf.webp`
 
 All four are 1254 × 1254 images with genuine alpha transparency. Browser-native WebP encoding preserves dimensions and alpha; generated PNG originals remain in the imagegen output directory.
@@ -25,7 +27,28 @@ The existing GitHub Pages workflow already copies these assets. No build step or
 
 ### protein
 
-Current replacement (built-in imagegen): a moderately richer fold with four readable alpha helices, a four-strand beta sheet, and additional open connector loops. Genuine alpha transparency was verified before and after WebP export.
+Coherent-chain alternate (built-in imagegen): exactly one continuous, unbranched backbone with two free termini. Every helix, beta strand and loop belongs to the same traceable chain; there are no floating pieces, forks, T-junctions, duplicate connectors or unexplained chains. Genuine alpha transparency was verified before and after WebP export.
+
+Coherent-chain prompt:
+
+Use case: stylized-concept.
+Create an optimized second version of a premium 3D protein ribbon sculpture as an isolated transparent homepage asset.
+
+SCIENTIFIC CHAIN LOGIC IS THE MAIN REQUIREMENT: depict exactly ONE continuous, unbranched polypeptide backbone. It must have exactly two visible free ends total: one N-terminus and one C-terminus. Every alpha helix, beta strand, turn and loop must connect end-to-end as part of this single traceable path. No floating ribbon segments, no disconnected helices, no orphan loops, no chains that appear from nowhere, no forks, no branching, no T-junctions, no duplicate connector running alongside another connector, and no impossible ribbon intersections that merge chains.
+
+Use this explicit continuous sequence along the backbone:
+N-terminus → short loop → alpha helix 1 → loop → beta strand 1 → tight beta turn → beta strand 2 → loop → alpha helix 2 → loop → beta strand 3 → tight beta turn → beta strand 4 → loop → alpha helix 3 → loop → alpha helix 4 → short tail → C-terminus.
+Show all transitions visibly and cleanly. The four beta strands should form one compact pleated sheet while remaining portions of the same single chain. Use four readable alpha helices of varied lengths and restrained connector loops. Preserve roughly the same moderate complexity as the current protein image, with generous open gaps and a compact asymmetric globular fold. A ribbon may pass in front of another in perspective, but it must never fuse into or branch from it. No DNA, atoms, molecular spheres, cell components or extra objects.
+
+ART DIRECTION: high-end fine satin MATTE porcelain/ceramic, coordinated with the current cell and neural-network sculptures. Use only clear muted blue #6BA6BE and warm ivory #F1E6DE, balanced across continuous ribbon sections with seamless color transitions at connected boundaries. Broad soft highlights, subtle ceramic grain, gentle ambient occlusion, soft upper-left studio illumination, quiet right rim and refined three-quarter orthographic product view. No glossy plastic, glass, chrome, metal, glow or thin wire-like chains.
+
+COMPOSITION: square 1254-style canvas, centered full sculpture with 8–10% breathing room. Make the whole backbone visually traceable at homepage scale.
+
+CRITICAL TRANSPARENCY: output an actual RGBA PNG with alpha=0 around the sculpture and through every opening. Do not draw or simulate checkerboard squares. Do not include any white, gray, black, colored or textured background, floor, cast shadow, pedestal, text, labels, arrows, border or decoration.
+
+Current homepage protein, retained as `assets/images/home/protein.webp`:
+
+A moderately richer fold with four readable alpha helices, a four-strand beta sheet, and additional open connector loops. Genuine alpha transparency was verified before and after WebP export.
 
 Current prompt:
 
@@ -73,7 +96,26 @@ SUBJECT: one elegant eukaryotic cell cutaway sculpture. A near-spherical muted b
 
 ### network
 
-Current replacement (built-in imagegen): complete feed-forward connectivity between adjacent layers. The 3–4–4–3 layout has 12 + 16 + 12 = 40 inter-layer strands, with no connections inside a layer. The generated PNG and exported WebP both have genuine alpha transparency.
+Straight-line alternate (built-in imagegen; currently used on the homepage): the same fully connected 3–4–4–3 topology with exactly 40 adjacent-layer connections, rendered as perfectly straight slender porcelain rods. There are no same-layer, skipped-layer, loop, or recurrent connections. Genuine alpha transparency was verified before and after WebP export.
+
+Straight-line prompt:
+
+Use case: stylized-concept.
+Create a second-version premium artificial neural network sculpture as an isolated transparent homepage asset.
+
+TOPOLOGY: exactly 14 spherical nodes arranged in four clearly separated vertical columns from left to right: 3 input nodes, 4 hidden nodes, 4 hidden nodes, 3 output nodes. Fully connect each neighboring pair of columns only: 3×4 = 12 rods, 4×4 = 16 rods, and 4×3 = 12 rods, exactly 40 connections total. Every node connects to every node in the immediately adjacent layer. There must be zero connections between nodes in the same column, zero skipped-layer links, zero loops and zero recurrent links.
+
+STRAIGHT-LINE REQUIREMENT: every one of the 40 connections must be a perfectly STRAIGHT, slender cylindrical porcelain rod running directly from one sphere to another. No curves, arcs, waves, bends, sagging, organic routing or bundled cables. Use slight front-to-back depth offsets only at crossings so the rods remain readable, but each individual rod itself stays geometrically straight from endpoint to endpoint. Keep clear vertical gaps between nodes inside each column.
+
+ART DIRECTION: the same high-end satin MATTE porcelain style as the current collection. Nodes alternate muted medium blue #6BA6BE and warm ivory #F1E6DE; all straight rods use #6BA6BE. Broad soft highlights, subtle ceramic grain, gentle ambient occlusion, soft upper-left studio lighting, quiet right rim, refined three-quarter orthographic product view. No glossy plastic, glass, chrome, metal, glow, wires or mechanical joints.
+
+COMPOSITION: square 1254-style canvas, centered full sculpture with 8–10% breathing room, organized left-to-right layered silhouette.
+
+CRITICAL TRANSPARENCY: output an actual RGBA PNG with alpha=0 around the sculpture and in every opening. Do not draw or simulate checkerboard squares. Do not include any white, gray, black, colored or textured background, floor, cast shadow, pedestal, text, labels, arrows, border or decoration.
+
+Curved-line version retained as `assets/images/home/network.webp`:
+
+Complete feed-forward connectivity between adjacent layers. The 3–4–4–3 layout has 12 + 16 + 12 = 40 inter-layer strands, with no connections inside a layer. The generated PNG and exported WebP both have genuine alpha transparency.
 
 Current prompt: Create a premium 3D artificial neural network sculpture as an isolated transparent PNG asset. Arrange exactly 14 nodes in four vertical columns, 3–4–4–3. Fully connect every node to every node in the immediately following layer: 12 strands from layer one to two, 16 from layer two to three, and 12 from layer three to four, exactly 40 strands total. Use no same-layer, skipped-layer, loop, or recurrent connections. Route slim matte ceramic curves with depth offsets and keep open gaps between nodes. Use muted blue `#6BA6BE` and warm ivory `#F1E6DE`, satin matte porcelain, soft studio lighting, three-quarter orthographic framing, and genuine RGBA transparency throughout the background and openings. No checkerboard, floor, pedestal, text, labels, arrows, glow, or border.
 
