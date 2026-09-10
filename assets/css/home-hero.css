@@ -26,17 +26,17 @@
     perspective: 1200px;
   }
   .hero-research-object[data-kind="protein"] {
-    --object-x: 57%; --object-y: 68%; --object-size: 31%;
+    --object-x: 60%; --object-y: 68%; --object-size: 31%;
     --float-delay: -2s;
     z-index: 1;
   }
   .hero-research-object[data-kind="cell"] {
-    --object-x: 80%; --object-y: 48%; --object-size: 26%;
+    --object-x: 83%; --object-y: 48%; --object-size: 26%;
     --float-delay: -7s;
     z-index: 1;
   }
   .hero-research-object[data-kind="network"] {
-    --object-x: 59.5%; --object-y: 24%; --object-size: 32%;
+    --object-x: 62.5%; --object-y: 24%; --object-size: 32%;
     --float-delay: -4s;
     z-index: 0;
   }
